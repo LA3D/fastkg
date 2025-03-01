@@ -2,7 +2,7 @@
 
 d = { 'settings': { 'branch': 'main',
                 'doc_baseurl': '/fastkg',
-                'doc_host': 'https://la3d.github.io',
+                'doc_host': 'https://la3d.github.io/',
                 'git_url': 'https://github.com/la3d/fastkg',
                 'lib_path': 'fastkg'},
   'syms': { 'fastkg.core': { 'fastkg.core.KnowledgeGraph': ('core.html#knowledgegraph', 'fastkg/core.py'),

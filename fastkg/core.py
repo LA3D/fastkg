@@ -5,7 +5,7 @@
 # %% auto 0
 __all__ = ['KnowledgeGraph']
 
-# %% ../00_core.ipynb
+# %% ../00_core.ipynb 5
 import rdflib
 import pandas as pd
 import pyarrow as pa
@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Union, List, Dict, Any, IO
 
 
-# %% ../00_core.ipynb
+# %% ../00_core.ipynb 6
 class KnowledgeGraph:
     "RDFLib wrapper with Parquet storage capabilities"
     _COL_NAMES = ["subject", "predicate", "object"]
@@ -86,28 +86,28 @@ class KnowledgeGraph:
     
 
 
-# %% ../00_core.ipynb
+# %% ../00_core.ipynb 7
 @patch
 def add(self:KnowledgeGraph, triple):
     "Add a triple to the graph"
     self.g.add(triple)
     return self
 
-# %% ../00_core.ipynb
+# %% ../00_core.ipynb 8
 @patch
 def remove(self:KnowledgeGraph, triple):
     "Remove a triple from the graph"
     self.g.remove(triple)
     return self
 
-# %% ../00_core.ipynb
+# %% ../00_core.ipynb 9
 @patch
 def bind_ns(self:KnowledgeGraph, prefix, namespace):
     "Bind a namespace prefix"
     self.g.namespace_manager.bind(prefix, namespace)
     return self
 
-# %% ../00_core.ipynb
+# %% ../00_core.ipynb 10
 @patch
 def bind_namespaces(self:KnowledgeGraph, ns_dict):
     "Bind multiple namespace prefixes"
@@ -116,20 +116,20 @@ def bind_namespaces(self:KnowledgeGraph, ns_dict):
         self.g.namespace_manager.bind(prefix, ns)
     return self
 
-# %% ../00_core.ipynb
+# %% ../00_core.ipynb 11
 @patch
 def query(self:KnowledgeGraph, q):
     "Run a SPARQL query"
     return self.g.query(q)
 
-# %% ../00_core.ipynb
+# %% ../00_core.ipynb 12
 @patch
 def triples(self:KnowledgeGraph, pattern=None):
     "Return triples matching the pattern"
     pattern = ifnone(pattern, (None, None, None))
     return list(self.g.triples(pattern))
 
-# %% ../00_core.ipynb
+# %% ../00_core.ipynb 13
 @patch
 def __getitem__(self:KnowledgeGraph, pattern):
     "Get triples matching a pattern using [] syntax"

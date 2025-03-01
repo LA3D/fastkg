@@ -5,7 +5,7 @@
 # %% auto 0
 __all__ = ['SQLiteStore']
 
-# %% ../01_sqlite.ipynb
+# %% ../01_sqlite.ipynb 5
 import os
 import sqlite3
 import rdflib
@@ -14,7 +14,7 @@ from rdflib import URIRef, Literal, BNode, Graph
 from fastcore.all import *
 from .core import KnowledgeGraph
 
-# %% ../01_sqlite.ipynb
+# %% ../01_sqlite.ipynb 6
 class SQLiteStore(Store):
     """
     Simple SQLite-based triple store for RDFLib
@@ -204,14 +204,14 @@ class SQLiteStore(Store):
         return self.cursor.fetchone()[0]
 
 
-# %% ../01_sqlite.ipynb
+# %% ../01_sqlite.ipynb 7
 # Register our SQLite store with RDFLib
 rdflib.plugin.register(
     'SQLite', rdflib.store.Store,
     'fastkg.sqlite', 'SQLiteStore'
 )
 
-# %% ../01_sqlite.ipynb
+# %% ../01_sqlite.ipynb 8
 @patch
 def connect_sqlite(self:KnowledgeGraph, db_path, create=True):
     """Connect to a SQLite database file"""
@@ -225,7 +225,7 @@ def connect_sqlite(self:KnowledgeGraph, db_path, create=True):
     return self
 
 
-# %% ../01_sqlite.ipynb
+# %% ../01_sqlite.ipynb 9
 @patch
 def close(self:KnowledgeGraph):
     """Close the database connection if using a persistent store"""
