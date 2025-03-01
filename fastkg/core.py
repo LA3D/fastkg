@@ -70,20 +70,20 @@ class KnowledgeGraph:
                 elif o_str.startswith('_:'):
                     o = rdflib.BNode(o_str[2:])
                 elif o_str.startswith('"') or o_str.startswith("'"):
-                    # This is a simplified approach - full N3 parsing is complex
-                    # For production, consider using rdflib's parser directly
-                    o = rdflib.Literal(o_str)
+                    # FIX: Strip quotes from literals
+                    o = rdflib.Literal(o_str.strip('"\''))
                 else:
                     o = rdflib.Literal(o_str)
                     
                 triples.append((s, p, o))
             
-            # Add all triples in one batch
-            self.g.addN((s, p, o, self.g) for s, p, o in triples)
+            # FIX: Use add() for each triple instead of addN
+            for s, p, o in triples:
+                self.g.add((s, p, o))
         
         return self
 
-    
+        
 
 
 # %% ../00_core.ipynb 7
